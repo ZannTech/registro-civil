@@ -72,9 +72,11 @@ class DashboardController extends Controller
                     ]);
                     ajaxResponse("Dato insertado correctamente", true);
                 }else{
-                    $id = $request->post('id');
+                    $comentario = $request->post('rect');
+                    $this->addRectificacion($type, $id, $comentario);
                     $c = DB::selectOne("SELECT * FROM $type WHERE id = ?", [$id]);
                     DB::update("UPDATE $type set nombre_completo = ?, nombre_padre = ?, nombre_madre = ? WHERE id = ?", [$nombre_completo, $nombre_padre, $nombre_madre, $id]);
+                   
                     ajaxResponse("Dato actualizado correctamente", true);
 
                 }
@@ -93,6 +95,8 @@ class DashboardController extends Controller
                     ajaxResponse("Dato insertado correctamente", true);
 
                 }else{
+                    $comentario = $request->post('rect');
+                    $this->addRectificacion($type, $id, $comentario);
                     $c = DB::selectOne("SELECT * FROM $type WHERE id = ?", [$id]);
                     DB::update("UPDATE $type set nombre_hombre = ?, nombre_mujer = ? WHERE id = ?", [$nombre_hombre, $nombre_mujer, $id]);
                     ajaxResponse("Dato actualizado correctamente", true);
@@ -111,6 +115,8 @@ class DashboardController extends Controller
                     ajaxResponse("Dato insertado correctamente", true);
 
                 }else{
+                    $comentario = $request->post('rect');
+                    $this->addRectificacion($type, $id, $comentario);
                     $c = DB::selectOne("SELECT * FROM $type WHERE id = ?", [$id]);
                     DB::update("UPDATE $type set nombre_completo = ? WHERE id = ?", [$nombre_completo, $id]);
                     ajaxResponse("Dato actualizado correctamente", true);
@@ -120,8 +126,10 @@ class DashboardController extends Controller
         }
       
     }
-    public function addRectificacion($table, $id_field, $changed_value, $old_data){
-
+    public function addRectificacion($table, $id_field, $value){
+       return DB::insert("INSERT INTO rectificacion (id, nota, form, id_dato, fecha) VALUES(null, ?, ?, ?, ?)", [
+        $value,$table, $id_field, date('Y-m-d H:i:s')
+        ]);
     }
     public function deleteRow(Request $request){
         $type  = $request->post('type');

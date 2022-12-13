@@ -150,7 +150,7 @@
                     <form id="frm_crud">
                         <input type="hidden" id="id" name="id">
                         <input type="hidden" id="type" value="{{ $type }}" name="type">
-
+                        
                         @if ($type == 'acta_nacimiento')
                             <div class="row">
                                 <div class="col-lg-4">
@@ -226,6 +226,15 @@
                                     </div>
                                 </div>
                             @endif
+                            <div class="com-cont" style="display: none;">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="">Comentario de actualización (Rectificación)</label>
+                                        <textarea type="text" name="rect" class="form-control"
+                                            id="rect" placeholder=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
                           
 
                 </div>
@@ -258,6 +267,7 @@
         });
         const ShowModal = (id = '') => {
             $("#id").val(id)
+            id == '' ? $(".com-cont").fadeOut('fast')  : $(".com-cont").fadeIn('fast')
             id != '' ? $.ajax({
                 type: "POST",
                 url: "/showDetail",
@@ -338,3 +348,24 @@
                 $.ajax({
                     type: "POST",
                     url: "/crud",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Correcto',
+                                html: response.message,
+                                icon: 'success'
+                            }).then(() => {
+                                window.location.reload();
+                            })
+                        }
+                    }
+                });
+            })
+        });
+    </script>
+</x-default-layout>
