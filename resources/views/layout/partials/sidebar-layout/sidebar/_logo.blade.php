@@ -1,16 +1,16 @@
-{{-- <!--begin::Logo-->
+ <!--begin::Logo-->
 <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
 	<!--begin::Logo image-->
 	<a href="/">
 		@php $bodyAttribute = getHtmlAttribute('body', 'data-kt-app-layout') @endphp
 		@if ($bodyAttribute === 'dark-sidebar')
-			<img alt="Logo" src="{{ image('logos/default-dark.svg') }}" class="h-25px app-sidebar-logo-default" />
+			<img alt="Logo" src="{{ image('logos/OIP.jpg') }}" class="h-25px app-sidebar-logo-default" />
         @elseif($bodyAttribute === 'light-sidebar')
-				<img alt="Logo" src="{{ image('logos/default.svg') }}" class="theme-light-show h-25px app-sidebar-logo-default" />
-				<img alt="Logo" src="{{ image('logos/default-dark.svg') }}" class="theme-dark-show h-25px app-sidebar-logo-default" />
+				<img alt="Logo" src="{{ image('logos/OIP.jpg') }}" class="theme-light-show h-25px app-sidebar-logo-default" />
+				<img alt="Logo" src="{{ image('logos/OIP.jpg') }}" class="theme-dark-show h-25px app-sidebar-logo-default" />
 		@endif
 
-		<img alt="Logo" src="{{ image('logos/default-small.svg') }}" class="h-20px app-sidebar-logo-minimize" />
+		<img alt="Logo" src="{{ image('logos/OIP.jpg') }}" class="h-20px app-sidebar-logo-minimize" />
 	</a>
 	<!--end::Logo image-->
 	<!--begin::Sidebar toggle-->
@@ -20,4 +20,4 @@
 		data-kt-toggle-name="app-sidebar-minimize">{!! getSvgIcon('duotune/arrows/arr079.svg', 'svg-icon svg-icon-2 rotate-180') !!}</div>
 	<!--end::Sidebar toggle-->
 </div>
-<!--end::Logo--> --}}
+<!--end::Logo-->

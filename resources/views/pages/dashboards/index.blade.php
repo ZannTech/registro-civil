@@ -1,4 +1,5 @@
 <x-default-layout>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
     <style>
         .float {
             position: fixed;
@@ -6,13 +7,12 @@
             height: 60px;
             bottom: 40px;
             right: 40px;
-            background-color: #0C9;
+            background-color: rgb(105, 145, 255);
             color: #FFF;
             border-radius: 50px;
             text-align: center;
             box-shadow: 2px 2px 3px #999;
         }
-
         .my-float {
             margin-top: 22px;
         }
@@ -29,7 +29,7 @@
                     <div class="table-responsive">
                         <table
                             class="table table-striped-columns
-                    table-hover	
+                    table-hover
                     table-borderless
                     table-primary
                     align-middle">
@@ -54,9 +54,9 @@
                                             <td>{{ $d->fecha_registro }}</td>
                                             <td>
                                                 <button type="button" onclick="DeleteRow({{ $d->id }})"
-                                                    class="btn btn-danger">Eliminar</button>
+                                                    class="btn btn-danger"><i class="mdi mdi-trash-can"></i></button>
                                                 <button onclick="ShowModal({{ $d->id }})" type="button"
-                                                    class="btn btn-primary">Editar</button>
+                                                    class="btn btn-primary"><i class="mdi mdi-pen"></i></button>
 
                                             </td>
 
@@ -134,7 +134,7 @@
         </div>
     </div>
     <a href="javascript:ShowModal();" class="float">
-        <i class="fa fa-plus my-float"></i>
+        <i class="fa fa-plus my-float text-white"></i>
     </a>
 
     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
@@ -150,7 +150,7 @@
                     <form id="frm_crud">
                         <input type="hidden" id="id" name="id">
                         <input type="hidden" id="type" value="{{ $type }}" name="type">
-                        
+
                         @if ($type == 'acta_nacimiento')
                             <div class="row">
                                 <div class="col-lg-4">
@@ -235,7 +235,7 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
 
                 </div>
                 <div class="modal-footer">

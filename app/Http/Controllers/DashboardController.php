@@ -19,6 +19,25 @@ class DashboardController extends Controller
     {
         return $this->matrimonio();
     }
+    public function archivos(){
+        addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
+
+        return view('pages.dashboards.archivos', [
+        ]);
+    }
+    public function inicio(){
+        addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
+        return view('pages.dashboards.inicio', [
+
+        ]);
+    }
+    public function ayuda(){
+        addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
+        return view('pages.dashboards.ayuda', [
+
+        ]);
+    }
+
     public function nacimiento()
     {
         addVendors(['amcharts', 'amcharts-maps', 'amcharts-stock']);
@@ -57,7 +76,7 @@ class DashboardController extends Controller
         $type  = $request->post('type');
         $method = $request->post('method');
         switch($type){
-           
+
             case 'acta_nacimiento':
                 $nro = $request->post('nro');
                 $nombre_completo = $request->post('nombre_completo');
@@ -76,7 +95,7 @@ class DashboardController extends Controller
                     $this->addRectificacion($type, $id, $comentario);
                     $c = DB::selectOne("SELECT * FROM $type WHERE id = ?", [$id]);
                     DB::update("UPDATE $type set nombre_completo = ?, nombre_padre = ?, nombre_madre = ? WHERE id = ?", [$nombre_completo, $nombre_padre, $nombre_madre, $id]);
-                   
+
                     ajaxResponse("Dato actualizado correctamente", true);
 
                 }
@@ -124,7 +143,7 @@ class DashboardController extends Controller
                 }
             break;
         }
-      
+
     }
     public function addRectificacion($table, $id_field, $value){
        return DB::insert("INSERT INTO rectificacion (id, nota, form, id_dato, fecha) VALUES(null, ?, ?, ?, ?)", [
@@ -144,6 +163,6 @@ class DashboardController extends Controller
 
        return DB::selectOne("SELECT * FROM $type WHERE id = ?", [$id]);
 
-            
+
     }
 }

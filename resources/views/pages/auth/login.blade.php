@@ -12,13 +12,13 @@
             <!--end::Title-->
 
             <!--begin::Subtitle-->
-           
+
             <!--end::Subtitle--->
         </div>
         <!--begin::Heading-->
 
         <!--begin::Login options-->
-      
+
         <!--end::Login options-->
 
         <!--begin::Separator-->
@@ -48,7 +48,7 @@
 
             <!--begin::Link-->
             <a href="/forgot-password" class="link-primary">
-                Forgot Password ?
+                Olvidaste tu contraseña?
             </a>
             <!--end::Link-->
         </div>
@@ -63,7 +63,7 @@
         <!--end::Submit button-->
 
         <!--begin::Sign up-->
-      
+
         <!--end::Sign up-->
     </form>
     <!--end::Form-->

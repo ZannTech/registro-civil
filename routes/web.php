@@ -23,6 +23,13 @@ Route::get('/nacimiento', [DashboardController::class, 'nacimiento'])->middlewar
 Route::post('/crud', [DashboardController::class, 'genCrud'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/deleteRow', [DashboardController::class, 'deleteRow'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/showDetail', [DashboardController::class, 'getField']);
+Route::get('/archivos', [DashboardController::class, 'archivos'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/ayuda', [DashboardController::class, 'ayuda'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/inicio', [DashboardController::class, 'inicio'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 Route::get('/error', function () {
     abort(500);
 });
